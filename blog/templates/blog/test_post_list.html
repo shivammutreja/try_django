@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>My blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+	<style type="text/css" class="bund">
+        	body { 
+         		background: url('{% static "css/thumb-350-609248.jpg" %}') no-repeat center center fixed; 
+			background-size: cover;
+        	}
+	</style>
+	<a href="http://google.com" class="button">Go to Google</a>
+        <div>
+            <center><h1><a href="/">My Blog</a></h1></center>
+        </div>
+	<div class="content container">
+    		<div class="row">
+        		<div class="col-md-8">
+            			{% for post in posts %}
+                			<div class="post">
+                    				<div class="date">
+                        				<p>published: {{ post.published_date }}</p>
+                    				</div>
+                    				<h1><a href="{% static 'bootstrap/docs/examples/blog/index.html' %}">{{ post.title }}</a></h1>
+                    				<p>{{ post.text|linebreaksbr }}</p>
+                			</div>
+            			{% endfor %}
+        		</div>
+    		</div>
+	</div>	
+    </body>
+</html>
